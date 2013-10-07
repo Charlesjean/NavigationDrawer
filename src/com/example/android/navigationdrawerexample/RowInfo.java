@@ -8,20 +8,20 @@ import android.graphics.drawable.Drawable;
  * Created by chenduanjin on 9/13/13.
  */
 public class RowInfo {
-    private Drawable mImg;
+    private int mImg;
     private String rowItem;
 
-    public RowInfo(Drawable mImg, String rowItem) {
+    public RowInfo(int mImg, String rowItem) {
         this.mImg = mImg;
         this.rowItem = rowItem;
     }
 
 
-    public Drawable getmImg() {
+    public int getmImg() {
         return mImg;
     }
 
-    public void setmImg(Drawable mImg) {
+    public void setmImg(int mImg) {
         this.mImg = mImg;
     }
 

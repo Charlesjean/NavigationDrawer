@@ -6,6 +6,7 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.content.Context;
 import android.widget.BaseExpandableListAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -31,8 +32,6 @@ public class CustomArrayAdapter extends BaseExpandableListAdapter{
 
     @Override
     public int getChildrenCount(int i) {
-        if (i < 3)
-            return 0;
         return ((ArrayList<RowInfo>)(this.mData.getRowInfos().get(i))).size();
     }
 
@@ -43,8 +42,7 @@ public class CustomArrayAdapter extends BaseExpandableListAdapter{
 
     @Override
     public Object getChild(int i, int i2) {
-        if (i < 3)
-            return  null;
+
         return ((ArrayList<RowInfo>)(this.mData.getRowsForGroup(i))).get(i2);
     }
 
@@ -81,10 +79,6 @@ public class CustomArrayAdapter extends BaseExpandableListAdapter{
 
     @Override
     public View getChildView(int i, int i2, boolean b, View view, ViewGroup viewGroup) {
-
-        if (i < 3)
-            return null;
-
         View row = view;
         if (row == null)
         {
@@ -93,6 +87,10 @@ public class CustomArrayAdapter extends BaseExpandableListAdapter{
         }
         TextView rowtext = (TextView)row.findViewById(R.id.rowText);
         rowtext.setText(((ArrayList<RowInfo>)(this.mData.getRowsForGroup(i))).get(i2).getRowItem());
+
+        ImageView imageview = (ImageView)row.findViewById(R.id.rowImg);
+        imageview.setImageResource(((ArrayList<RowInfo>)(this.mData.getRowsForGroup(i))).get(i2).getmImg());
+
         return row;
     }
 

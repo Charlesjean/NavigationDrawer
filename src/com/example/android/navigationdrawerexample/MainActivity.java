@@ -25,6 +25,7 @@ import android.app.FragmentManager;
 import android.app.SearchManager;
 import android.content.Intent;
 import android.content.res.Configuration;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.v4.app.ActionBarDrawerToggle;
 import android.support.v4.view.GravityCompat;
@@ -88,7 +89,7 @@ public class MainActivity extends Activity {
         mPlanetTitles = getResources().getStringArray(R.array.planets_array);
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         mDrawerList = (ExpandableListView) findViewById(R.id.left_drawer);
-        mDrawerList.setGroupIndicator(null);
+
 
         // set a custom shadow that overlays the main content when the drawer opens
         mDrawerLayout.setDrawerShadow(R.drawable.drawer_shadow, GravityCompat.START);
@@ -264,18 +265,49 @@ public class MainActivity extends Activity {
     {
         ArrayList<GroupHeaderInfo> headArray = new ArrayList<GroupHeaderInfo>();
         ArrayList<ArrayList<RowInfo>> rowsArray = new ArrayList<ArrayList<RowInfo>>();
-        for (int i = 0; i < 5; ++i)
+
+        //Asian country
         {
-            GroupHeaderInfo info = new GroupHeaderInfo("Head" + i);
+            GroupHeaderInfo info = new GroupHeaderInfo("Asian Country");
             headArray.add(info);
-           ArrayList<RowInfo> rowArray = new ArrayList<RowInfo>();
-            for (int j =0; j < 5; ++j)
-            {
-                RowInfo row = new RowInfo(null,"row" + j);
-                rowArray.add(row);
-            }
+            ArrayList<RowInfo> rowArray = new ArrayList<RowInfo>();
+            RowInfo row = new RowInfo(R.drawable.china, "China");
+            rowArray.add(row);
+            RowInfo row2 = new RowInfo(R.drawable.japan, "Japan");
+            rowArray.add(row2);
+            RowInfo row3 = new RowInfo(R.drawable.korea, "Korea");
+            rowArray.add(row3);
             rowsArray.add(rowArray);
         }
+
+        {
+            GroupHeaderInfo info2 = new GroupHeaderInfo("North America");
+            headArray.add(info2);
+
+            ArrayList<RowInfo> rowArray = new ArrayList<RowInfo>();
+            RowInfo row = new RowInfo(R.drawable.america, "America");
+            rowArray.add(row);
+            RowInfo row2 = new RowInfo(R.drawable.canada, "Canada");
+            rowArray.add(row2);
+            rowsArray.add(rowArray);
+        }
+
+        {
+            GroupHeaderInfo info2 = new GroupHeaderInfo("Europe");
+            headArray.add(info2);
+
+            ArrayList<RowInfo> rowArray = new ArrayList<RowInfo>();
+            RowInfo row = new RowInfo(R.drawable.england, "England");
+            rowArray.add(row);
+            RowInfo row2 = new RowInfo(R.drawable.france, "France");
+            rowArray.add(row2);
+            rowsArray.add(rowArray);
+
+        }
+
+
+
+
 
         return new DataModel(headArray,rowsArray);
     }
